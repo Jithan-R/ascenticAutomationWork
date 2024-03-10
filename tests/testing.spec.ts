@@ -4,18 +4,15 @@ import commons from "../commonFunction/commons";
 let common;
 
 test.beforeEach('This always verify the home landing page', async({page}) => {
+    //This step will vist the page before each test
     common = new commons(page);
     await common.visitPage();
 });
 
 test.afterEach('', async({page}) => {
+    //This step will close the page after each test
     await page.context().close();
 });
-
-// test.afterAll('Verify customer service page', async ({page}) => {
-//     await common.customerServicePage();
-//     await common.customerServicePageTrackYourDelivery();
-// });
 
 test.describe('Steps for verifying features', () => {
     test('Verify idendified features', async ({page}) => {

@@ -18,6 +18,7 @@ class commons {
 
   //Seletiing itme using menue option verification
   public async selectItemFromMenu () {
+    //Seleting the menu --> Gaming option
     await this.page.locator('//span[@class = "burger-wrapper"]').click();
     await this.page.locator('//a[@itemid= "contentbean:107144"]').click();
     await expect(this.page.locator('//h1[contains(text(), " Gaming ")]'))
@@ -54,8 +55,6 @@ class commons {
     //Fill data to See when we can deliver to you
     await this.page.locator('//input[@formcontrolname="postalCode"]')
       .fill(data.addToShoppingCart.zipCode);
-    // await expect(this.page.locator('//h3[contains(text(), "Rekommenderade tillbehör")]'))
-    //   .toBeVisible();
     await this.page.locator('//button[@elk-ta = "addToCart-button"]').click();
     await this.page.locator('//span[contains(text(), "Till kassan")]').click();
     
@@ -64,8 +63,6 @@ class commons {
       .toBeVisible();
     await expect(this.page.getByText('iPhone 13 Pro Max silikonfodral med MagSafe (Abyss Blue)'))
       .toBeVisible();
-
-    //Click add to card button
     
     //Fill checkout details
     await this.page.getByLabel('E-postadress *').click();
@@ -78,46 +75,28 @@ class commons {
     await this.page.getByPlaceholder('+').fill(data.addToShoppingCart.mobile);
     // await this.page.getByRole('button', { name: 'Fortsätt' }).click();
     await this.page.waitForTimeout(5000);
+
+    //Select Välj leveransmetod option
     await this.page.locator('//h3[contains(text(), " 2. Välj leveransmetod ")]').click();
     await expect(this.page.locator('//strong[contains(text(), " GRATIS - Boka")]'))
       .toBeVisible();
     await this.page.locator('//strong[contains(text(), " GRATIS - Boka")]').click();
     await this.page.locator('//strong[contains(text(), "Kortbetalning")]').click();
     
+    //Fill the credit card details
     await this.page.frameLocator('iframe[title="Iframe för utgångsdatum"]').getByPlaceholder('MM/ÅÅ').click();
     await this.page.frameLocator('iframe[title="Iframe för utgångsdatum"]').getByPlaceholder('MM/ÅÅ').fill(data.addToShoppingCart.expDate);
     await this.page.frameLocator('iframe[title="Iframe för säkerhetskod"]').getByPlaceholder('siffror').click();
     await this.page.frameLocator('iframe[title="Iframe för säkerhetskod"]').getByPlaceholder('siffror').fill(data.addToShoppingCart.cvcNo);
-    // await this.page.pause();
-  }
+  };
 
   //Verify filtering items
   public async filterItem(){//Filter by color
     await this.page.locator('//button//img[contains(@alt,"Svart") and (@height="40")]')
       .click();
-
-    // //Filter by customer rating
-    // await this.page.locator('//span[contains(text(), " & up ")]')
-    //   .click();
-    
-    // //Selecting brand
-    // await this.page.locator('//h3[contains(text(), "Märke")]').click();
-    // await this.page.locator('//input[@aria-label="META QUEST"]').click();
-    
-    //Selecting product type
-    // await this.page.locator('//input[@aria-label="Fäste/montering"]')
-    //   .click();
-
-    //Verify filted fields
-    // await expect(this.page.locator('//button[@data-template="filter"]//span[contains(text(), "Fäste/montering")]'))
-    //   .toBeVisible();
-    // await expect(this.page.locator('//button[@data-template="filter"]//span[contains(text(), "META QUEST")]'))
-    //   .toBeVisible();
     await expect(this.page.locator('//button[@data-template="filter"]//span[contains(text(), "Svart")]'))
       .toBeVisible();
-    // await expect(this.page.locator('//span[@id="rating__and-up-Fäste/montering"]'))
-    //   .toBeVisible();
-    }
+  };
 
   //Verify checking products using store option
   public async viewProductsInStore () {
@@ -132,7 +111,7 @@ class commons {
     await this.page.locator('//button[@class="close-button"]').click();
     await expect(this.page.locator('//h1[contains(text(), " VR gaming ")]'))
       .toBeVisible();
-  }
+  };
 
   //Verifying customer service page and selecting 2 services to verify
   public async customerServicePage () {
@@ -149,7 +128,7 @@ class commons {
       .toHaveText(" Hjälp och support ");
     await expect(this.page.locator('//strong[contains(text(), "Fungerar ")]'))
       .toHaveText(data.cusromerService.helpAndSupportPara);
-  }
+  };
 
   //Verify one of Customer Service Feature: Track your delivery
   public async customerServicePageTrackYourDelivery () {
@@ -165,6 +144,8 @@ class commons {
       .toHaveText(" Spåra din leverans ");
     await expect(this.page.locator('//p[contains(text(), "ar du ")]'))
       .toHaveText(data.cusromerService.trackYourDeliveryPara);
-  }
-}
+  };
+};
+
+// Exporting the common fucntion, so we can access this from our main test runner
 export default commons;
