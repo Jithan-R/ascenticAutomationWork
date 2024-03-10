@@ -1,0 +1,36 @@
+{
+    "searchBarData": {
+        "typeText": "iphone 13"
+    },
+
+    "customerService": {
+        "customerServiceText": "Kundtjänst"
+    },
+
+    "searchReult": {
+        "searchReultText": "iphone 13 pro max"
+    },
+
+    "cusromerService": {
+        "cusromerServiceURL":"https://www.elgiganten.se/kundtjanst/",
+        "repairAndSupport": " Reparation och support ",
+        "helpAndSupport": " Reparation och support ",
+        "helpAndSupportPara": "Fungerar inte din produkt som den ska? Då är du på rätt plats! Här hittar du all viktig information om våra servicelösningar och leverantörers produktsupport, läs mer om reklamation, garanti, ansvar för defekt och vad du ska göra om din produkt har skadats under leverans.",
+        "trackYourDelivery": " Spåra din leverans ",
+        "trackYourDeliveryPara": "Har du köpt en vara på Elgiganten.se, per telefon eller i ett varuhus och undrar när den kommer? På den här sidan visar vi dig hur du hittar spårningsnumret för att se status."
+    },
+
+    "addToShoppingCart": {
+        "zipCode": "12334",
+        "email": "test@gmail.com",
+        "socialSecurity": "199505071234",
+        "mobile": "+46 76-612 34 56",
+        "name": "Astrid Malin",
+        "street": "Agnesberg",
+        "ZipCode": "42438",
+        "deliveryInstruction": "Delivery on behalf of Astrid",
+        "cardNo": "4910149954176741",
+        "expDate": "03/29",
+        "cvcNo": "595"
+    }
+}
