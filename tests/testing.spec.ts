@@ -9,17 +9,12 @@ test.beforeEach('This always verify the home landing page', async({page}) => {
     await common.visitPage();
 });
 
-test.afterEach('', async({page}) => {
-    //This step will close the page after each test
-    await page.context().close();
-});
-
 test.describe('Steps for verifying features', () => {
     test('Verify idendified features', async ({page}) => {
-        //Feature 1: Verify item selection using menue option
+        //Feature 1: Select an item selection using menu option
         await common.selectItemFromMenu();
 
-        // //Fwature 2: Verify filtering and view product in store
+        // //Fwature 2: Do simple color filter and view selected item in available store
         await common.filterItem();
         await common.viewProductsInStore();
 
@@ -32,5 +27,11 @@ test.describe('Steps for verifying features', () => {
 
         //Fwature 5: Verify Add card option and payment
         await common.addToShoppingCartAndPaymentProcedure();    
+        await common.viewItemFromCart();
     });
 });   
+
+test.afterEach('', async({page}) => {
+    //This step will close the page after each test
+    await page.context().close();
+});

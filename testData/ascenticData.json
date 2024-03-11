@@ -32,5 +32,9 @@
         "cardNo": "4910149954176741",
         "expDate": "03/29",
         "cvcNo": "595"
+    },
+
+    "storeData": {
+        "storeName": "Elgiganten Kista Galleria (Phonehouse)"
     }
 }
