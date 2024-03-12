@@ -14,9 +14,9 @@ class commons {
     await this.page.goto("/");
     await this.page.locator('#declineButton').click();
     await expect(this.page.locator('#logo')).toBeVisible();
-  }
+  };
 
-  //Seletiing itme using menue option verification
+  //Verify itme using menue option verification
   public async selectItemFromMenu () {
     //Seleting the menu --> Gaming option
     await this.page.locator('//span[@class = "burger-wrapper"]').click();
@@ -26,6 +26,7 @@ class commons {
     await this.page.locator('//img[contains(@alt, "Menu icon-vr-banner-2022-kategori") and (@loading="eager")]')
       .click();
   };
+
   //Verify filtering items
   public async filterItem(){//Filter by color
     await this.page.locator('//button//img[contains(@alt,"Svart") and (@height="40")]')
@@ -87,7 +88,7 @@ class commons {
       .toHaveText(data.cusromerService.trackYourDeliveryPara);
   };
 
-  //Search bar option verification
+  //Verify search bar option
   public async searchBarFunction() {
     await this.page.locator('//input[@type="search"]')
       .fill(data.searchBarData.typeText);
@@ -96,7 +97,7 @@ class commons {
     await this.page.waitForTimeout(5000);
     await this.page.locator('#iphone-13-pro-max')
       .click();
-    await this.page.waitForTimeout(5000); // hard wait for 5000ms
+    await this.page.waitForTimeout(5000);
     await expect(this.page.locator('//span[contains(@class, "search-heading")]'))
       .toHaveText(data.searchReult.searchReultText);
     await expect(this.page.locator('//h1[contains(@class, "search-heading")]'))
@@ -105,7 +106,7 @@ class commons {
       .toBeVisible();
   };
 
-
+  //Verify add to shopping cart and payment procedure
   public async addToShoppingCartAndPaymentProcedure() {
     //Adding to shopping cart: Select a product
     await this.page.getByTitle('iPhone 13 Pro Max silikonfodral med MagSafe (Abyss Blue) - Elgiganten').getByRole('link').first().click();
@@ -134,7 +135,8 @@ class commons {
     await this.page.getByRole('button', { name: 'Lägg till adress manuellt' }).click();
     await this.page.getByPlaceholder('+').click();
     await this.page.getByPlaceholder('+').fill(data.addToShoppingCart.mobile);
-    await this.page.waitForTimeout(5000);
+    await expect(this.page.locator('//mat-hint[@id="mat-hint-2"]'))
+      .toBeVisible();
 
     //Select Välj leveransmetod option
     await this.page.locator('//h3[contains(text(), " 2. Välj leveransmetod ")]').click();
@@ -162,5 +164,5 @@ class commons {
   };
 };
 
-// Exporting the common fucntion, so we can access this from our main test runner
+//Export the common fucntion access it from main test runner
 export default commons;
